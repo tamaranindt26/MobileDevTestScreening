@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -8,9 +9,10 @@
 
     <ImageView
         android:id="@+id/grid_img"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop"/>
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/a"/>
 
     <TextView
         android:id="@+id/item_name"
@@ -18,7 +20,8 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_marginTop="3dp"
-        android:text="cb"/>
+        android:text="name"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/item_birth"
@@ -26,6 +29,7 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:layout_marginTop="3dp"
-        android:text="cb"/>
+        android:text="date"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileDevTestScreening">
-        <activity android:name=".hlm4"></activity>
+        <activity android:name=".hlm5"></activity>
+        <activity android:name=".hlm4" />
         <activity android:name=".hlm3" />
         <activity android:name=".hlm2" />
         <activity android:name=".MainActivity">

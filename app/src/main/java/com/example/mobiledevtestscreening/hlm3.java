@@ -1,6 +1,7 @@
 package com.example.mobiledevtestscreening;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 public class hlm3 extends AppCompatActivity {
 
     GridView gridView;
+    SwipeRefreshLayout swipeRefreshLayout;
     String[] items_name = {"Andi", "Budi", "Charlie", "Dede"};
     String[] items_birth = {"2014-01-01", "2014-02-02", "2014-03-03", "2014-06-06"};
     int[] items_img = {R.drawable.a,R.drawable.b,R.drawable.c,R.drawable.d};
@@ -36,32 +38,40 @@ public class hlm3 extends AppCompatActivity {
        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-               Intent a = new Intent(hlm3.this, hlm2.class);
-               startActivity(a);
+               Intent guest = new Intent(hlm3.this, hlm2.class);
+               startActivity(guest);
+
+               /*Button btn_guest = findViewById(R.id.btnGuest);
+               btn_guest.setText(items_name[i]); */
            }
        });
+
+        swipeRefreshLayout = findViewById(R.id.refresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+            }
+        });
 
     }
 
     public class GridAdapter extends BaseAdapter{
-        private String[] items_name;
-        private String[] items_birth;
-        private int[] items_img;
-        private Context context;
-        private LayoutInflater layoutInflater;
+        String[] name;
+        String[] birth;
+        int[] img;
+        Context context;
+        LayoutInflater layoutInflater;
 
-        public GridAdapter(String[] items_name, String[] items_birth, int[] items_img, Context context){
-            this.items_img = items_img;
-            this.items_name = items_name;
-            this.items_birth = items_birth;
+        public GridAdapter(String[] name, String[] birth, int[] img, Context context){
+            this.img = img;
+            this.name = name;
+            this.birth = birth;
             this.context = context;
-            this.layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-
         }
 
         @Override
         public int getCount() {
-            return items_img.length;
+            return items_name.length;
         }
 
         @Override
@@ -77,8 +87,11 @@ public class hlm3 extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
 
+            if (layoutInflater == null) {
+                layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
+            }
             if (view == null){
-                view = layoutInflater.inflate(R.layout.listview_item, viewGroup, false);
+                view = layoutInflater.inflate(R.layout.grid_item, null);
             }
 
             ImageView item_image = view.findViewById(R.id.grid_img);
